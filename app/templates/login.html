@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Sphere - Login</title>
+  <!-- Link to Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS for additional styling -->
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+               
+               <li class="nav-item">
+           <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      
+      
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign In
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+          
+          <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
+          <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+<!-- Login Form -->
+<div class="container mt-5">
+<h1 class="text-center mb-4">Welcome back!</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">Login</h2>
+          <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              <!--label for="email">Email</label-->
+              <!-- Flask/Jinja code for email field -->
+              {{ form.email.label }}
+              {{ form.email(class="form-control", id="email") }}
+              {% for error in form.email.errors %}
+              <span style="color: red;">[{{ error }}]<br></span>
+              {% endfor %}
+            </div>
+            <div class="form-group">
+              <!--label for="password">Password</label-->
+              <!-- Flask/Jinja code for password field -->
+              {{ form.password.label }}
+              {{ form.password(class="form-control", id="password") }}
+              {% for error in form.password.errors %}
+              <span style="color: red">[{{ error }}]<br></span>
+              {% endfor %}
+            </div>
+            <!-- Submit button -->
+	   {{ form.submit(class="btn btn-primary btn-block") }}<br><br>
+            <!--button type="submit" class="btn btn-primary btn-block">Login</button-->
+          <a class="nav-link text-center" href="/resetPass">Forgot Password?</a>
+        </li>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="../static/script.js"></script>
+
+</body>
+</html>
+

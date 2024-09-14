@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block form_action %}
+	/signup/sponsor
+{% endblock form_action %}
+
+{% block surname %}
+
+    {{ form.organization.label }}
+    <br>
+    {{ form.organization }}
+    {% for error in form.organization.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    <br>
+    {{ form.gender.label }}
+    <br>
+    {{ form.gender }}
+    {% for error in form.gender.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+{% endblock surname %}
+
+{% block uploads %}
+
+    {{ form.profile_image_path.label }} <br>
+    {{ form.profile_image_path }}
+    {% for error in form.profile_image_path.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+{% endblock uploads %}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Sphere - Profiles</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/home">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto"> 
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+    
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: {{ current_user.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/profile">My Account</a>
+          <a class="dropdown-item" href="/logout">Logout</a> <!-- Add this line -->
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Profiles Section -->
+<section id="profiles" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Player Profiles</h2>
+  
+  <!-- Filters Section -->
+  <form action="/profiles" method="post">
+  
+  	<div class="row mb-4">
+	  <div class="col-md-3">
+	    <select name="age" class="form-control" id="ageFilter">
+	      <option value="">Filter by Age</option>
+	      <option value="U15">U15</option>
+	      <option value="U18">U18</option>
+	      <option value="U21">U21</option>
+	      <option value="U23">U23</option>
+	      <option value="Above 23">Above 23</option>
+	    </select>
+	  </div>
+	  <div class="col-md-3">
+	    <select name="gender" class="form-control" id="genderFilter">
+	      <option value="">Filter by Gender</option>
+	      <option value="male">Male</option>
+	      <option value="female">Female</option>
+	    </select>
+	  </div>
+	  <div class="col-md-3">
+	    <select name="position" class="form-control" id="skillFilter">
+	      <option value="">Filter by Skill</option>
+	      <option value="forward">Striker</option>
+	      <option value="midfielder">Midfielder</option>
+	      <option value="defender">Defender</option>
+	      <option value="goalkeeper">Goalkeeper</option>
+	    </select>
+	  </div>
+	 <div class="col-md-3">
+	  <div class="input-group">
+	    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+	    <div class="input-group-append">
+	      <button class="btn btn-primary" type="submit" id="searchButton">
+		<i class="fas fa-search"></i> 
+	      </button>
+	    </div>
+	  </div>
+	</div>
+  </form>	
+
+    
+ <!-- Profiles inner Section -->
+<section id="profiles" class="py-5">
+  <div class="card">
+  <div class="card-body">
+    <h2 class="text-center mb-4"></h2>
+    <div class="row" id="profileList">
+    
+      <!-- Ideally we should add Profile cards dynamically here from the backend -->
+      {% for player in players %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ player.profile_image_path }}" onerror="this.onerror=null; this.src='/static/profile_pics/default.png';" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+		  <h5 class="card-title">Name: {{ player.name }} {{ player.surname }}</h5>
+            <p class="card-text">Position: {{ player.position }}</p>
+            <p class="card-text"> Age: {{ player.age }}</p>
+            <p class="card-text"> Gender: {{ player.gender }} </p>
+            <p class="card-text">Bio: {{ player.bio }}</p>
+      
+            <form action="/profile/{{ player.id }}" method="get">
+              <button type="submit" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!--
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{ current_user.name }}</h5>
+            <p class="card-text">Position: {{ current_user.position }}</p>
+            <p class="card-text">Age: {{ current_user.age }}</p>
+            <p class="card-text">Gender: {{ current_user.gender }}</p>
+            <p class="card-text">Bio: {{ current_user.bio }}</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+    -->
+    </div>
+  </div>
+  </div>
+
+                    </div>
+  <!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Centered button -->
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center">
+        <form action="/profiles" method="get" >
+        	<button class="btn btn-primary" id="seeMoreBtn" type="submit">See More Profiles</button>
+	</form>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<!-- Custom js -->
+<script src="static/script.js"></script>
+</body>
+</html>
+

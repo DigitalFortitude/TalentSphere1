@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Sphere - Home</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto"> 
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+    
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: {{ current_user.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main.logout') }}">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</nav>
+
+<section id="cta" class="py-5 d-flex justify-content-center align-items-center" style="background-image: url('static/images/slideshow/11.jpg'); background-size: cover; background-position: center; height: 900px;">
+  <div class="container text-center" style="color: #d5e0c0;">
+    <h1 class="display-1 font-weight-bold text-uppercase">Welcome To Talent Sphere</h1>
+    <a href="#profiles" class="btn btn-light btn-lg btn-block mt-4">Get Started</a>
+  </div>
+</section>
+
+
+
+
+<!-- Profiles Section -->
+<section id="profiles" class="py-5">
+
+     
+  <!-- Filters Section -->
+<div class="row mb-4">
+  <div class="col-md-3">
+    <select class="form-control" id="ageFilter">
+      <option value="">Filter by Age</option>
+      <option value="U15">U15</option>
+      <option value="U18">U18</option>
+      <option value="U21">U21</option>
+      <option value="U23">U23</option>
+      <option value="Above23">Above 23</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select class="form-control" id="genderFilter">
+      <option value="">Filter by Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select class="form-control" id="skillFilter">
+      <option value="">Filter by Skill</option>
+      <option value="Striker">Striker</option>
+      <option value="Midfielder">Midfielder</option>
+      <option value="Defender">Defender</option>
+      <option value="Goalkeeper">Goalkeeper</option>
+    </select>
+  </div>
+ <div class="col-md-3">
+  <div class="input-group">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" id="searchButton">
+        <i class="fas fa-search"></i> 
+      </button>
+    </div>
+  </div>
+</div>
+
+    
+ <!-- Profiles inner Section -->
+<section id="profiles" class="py-5">
+  <div class="card">
+  <div class="card-body">
+    <h2 class="text-center mb-4"></h2>
+    <div class="row" id="profileList">
+    
+    
+     <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">Name: {{ current_user.name }}</h5>
+      <p class="card-text">Position: {{ current_user.position }}</p>
+      <p class="card-text">Age: {{ current_user.age }}</p>
+      <p class="card-text">Gender: {{ current_user.gender }}</p>
+      <p class="card-text">Bio: {{ current_user.bio }}</p>
+       <a href="/profile/{{ player_id }}" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+      <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+
+      <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+ <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+      <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+       <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+       <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+      
+       <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+     <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+       <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+ <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+       <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+ <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+
+ <div class="col-md-4 mb-4">
+  <div class="card">
+    <video class="card-img-top" controls>
+      <source src="videos/prof1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Position: Striker</p>
+      <p class="card-text">Age: 22</p>
+      <p class="card-text">Gender: Male</p>
+      <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="/profile" class="btn btn-primary btn-sm expand-btn">View profile</a>
+
+    </div>
+  </div>
+</div>
+</div>
+
+  </section>
+</div>
+
+
+  <!-- Centered button -->
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center">
+        <button class="btn btn-primary" id="seeMoreBtn">See More Profiles</button>
+      </div>
+    </div>
+  </div>
+
+  
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Call-to-Action Section -->
+<section id="cta" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Connect with us on social media!</h2>
+    <p class="mb-4">Stay updated with our latest events and offers.</p>
+  <button class="btn btn-primary" onclick="togglePopup()">Follow us</button>
+  </div>
+</section>
+
+<!-- Social Media Popup -->
+<div id="socialMediaPopup" class="modal fade">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Follow Us on Social Media</h5>
+                <button type="button" class="close" onclick="togglePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-unstyled list-inline social-media-list">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 fixed-bottom">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<!-- Custom js -->
+<script src="static/script.js"></script>
+</body>
+</html>
+

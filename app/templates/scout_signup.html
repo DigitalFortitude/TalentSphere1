@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+<!-- Form -->
+
+{% block form_action %}/signup/scout{% endblock form_action %}
+
+{% block surname %}
+
+    {{ form.surname.label }} {{ form.surname }}
+    <br>
+    {% for error in form.surname.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    {{ form.DOB.label }}
+    <br>
+    {{ form.DOB }}
+    {% for error in form.DOB.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    {{ form.gender.label }}
+    <br>
+    {{ form.gender }}
+    {% for error in form.gender.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    {{ form.club.label }}
+    <br>
+    {{ form.club }}
+    {% for error in form.club.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    {{ form.academy.label }}
+    <br>
+    {{ form.academy }}
+    {% for error in form.academy.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+  
+  {% endblock surname %}
+  
+  {% block uploads %}
+
+    {{ form.profile_image_path.label }} <br>
+    {{ form.profile_image_path }}
+    {% for error in form.profile_image_path.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+  
+  {% endblock uploads %}

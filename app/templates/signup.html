@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Talent Sphere</title>
+    <!-- Link to Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+               
+               <li class="nav-item">
+           <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      
+      
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign In
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+         
+          <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
+          <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Welcome to Talent Sphere</h1>
+  <p class="text-center mb-4">We ignite dreams for footballers, inspire investors and sponsors with scintillating talent, and mesmerize scouts, clubs, and academies.</p>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <p class="card-text text-center">Who are you joining us as?</p>
+          <form action="/signup" method="POST" class="text-center">
+            <div class="form-group">
+              <select name="role" class="form-control">
+                <option value="Football Player">Football Player</option>
+                <option value="Scout">Scout</option>
+                <option value="Football Club">Football Club</option>
+                <option value="Football Academy">Football Academy</option>
+                <option value="Sponsor">Sponsor</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="../static/script.js"></script>
+</body>
+</html>
+

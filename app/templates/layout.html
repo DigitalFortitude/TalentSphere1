@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User SignUp</title>
+    <!-- Link to a modern CSS framework like Bootstrap for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+<!-- Our nav bar with signup or login option -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" href="/team">About Us</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign In
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
+          <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+ <h1 class="text-center mb-4">Welcome {{ user }}!</h1>
+    <form action="{% block form_action %}{% endblock %}" enctype="multipart/form-data" method='post'>
+        <fieldset class="mb-4">
+            <legend>Personal Information</legend>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }} 
+                {{ form.name(class="form-control") }}
+                {% for error in form.name.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            {% block surname %} {% endblock surname %}
+            
+        </fieldset>
+        
+        <fieldset class="mb-4">
+            <legend>Contact Details</legend>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }} 
+                {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.phone_number.label(class="form-label") }} 
+                {{ form.phone_number(class="form-control") }}
+                {% for error in form.phone_number.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        
+        <fieldset class="mb-4">
+            <legend>Location</legend>
+            <div class="form-group">
+                {{ form.city.label(class="form-label") }} 
+                {{ form.city(class="form-control") }}
+                {% for error in form.city.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.country.label(class="form-label") }} 
+                {{ form.country(class="form-control") }}
+                {% for error in form.country.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.postal_code.label(class="form-label") }} 
+                {{ form.postal_code(class="form-control") }}
+                {% for error in form.postal_code.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        
+        <fieldset class="mb-4">
+            <legend>Password Setup</legend>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }} 
+                {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-label") }} 
+                {{ form.confirm_password(class="form-control") }}
+                {% for error in form.confirm_password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        
+        <fieldset class="mb-4">
+            <legend>Image Uploads</legend>
+            {% block uploads %}{% endblock uploads %}
+        </fieldset>
+        {{ form.submit(class="btn btn-primary") }}
+   </form>
+</div>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="../static/script.js"></script>
+
+</body>
+</html>

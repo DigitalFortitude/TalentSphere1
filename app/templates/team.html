@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Sphere - About Us</title>
+  <!-- Link to a modern CSS framework like Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS for additional styling -->
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+<!-- navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/profiles">Profiles</a>
+        </li>
+                <li class="nav-item">
+            <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: {{ current_user.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main.logout') }}">Logout</a>
+        </div>
+      </div>
+    </div>
+    
+      
+    </div>
+  </div>
+</nav>
+
+<!-- About Us Container -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">About Talent Sphere</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <p class="lead">Talent Sphere stands as a dynamic platform committed to forging connections between exceptionally skilled individuals and the myriad of opportunities that abound in the realm of sports, with a special focus on the exhilarating world of soccer. Our mission, deeply imbued with passion and dedication, is to cultivate a meticulously crafted environment where players, clubs, mentors, and sponsors converge harmoniously, igniting a synergy that propels collective growth and advancement.</p>
+          <p class="lead">As developers, Tinashe Navonika, Tanatswa Gendere, and Eric Kinger, we've poured our hearts and souls into crafting this platform, driven by our unwavering belief in the transformative power of sports. With Talent Sphere, we invite you to join us on this exhilarating journey of discovery, connection, and achievement.</p>
+          <p class="lead">Whether you're a rising star seeking your next breakthrough, a club in pursuit of top-tier talent, a mentor eager to guide the next generation, or a sponsor looking to invest in potential, Talent Sphere offers the perfect nexus to actualize your ambitions and aspirations within the vibrant tapestry of sports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <!-- Developer Section -->
+<div class="container mt-5">
+  <h2 class="text-center">Meet The Developers of Talent Sphere</h2>
+  <div class="row text-center mt-5">
+    <!-- Tanatswa -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../static/images/profile1.jpg" alt="Developer 1" class="card-img-top img-fluid rounded-circle">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Tanatswa Gendere</h5>
+          <p class="card-text text-muted">Developer</p>
+          <p class="card-text">Tanatswa is an experienced web developer with a passion for creating innovative solutions. With a background in computer science, he specializes in front-end development and user experience design. In his free time, he enjoys playing soccer and exploring new technologies.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Tinashe -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../static/images/profile1.jpg" alt="Developer 2" class="card-img-top img-fluid rounded-circle">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Tinashe Navonika</h5>
+          <p class="card-text text-muted">Developer</p>
+          <p class="card-text">Tinashe is a skilled software engineer with a strong background in full-stack development. He is passionate about creating efficient and scalable applications that provide meaningful solutions to real-world problems. Outside of work, he enjoys playing guitar and traveling.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Eric -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../static/images/profile1.jpg" alt="Developer 3" class="card-img-top img-fluid rounded-circle">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Eric Kinger</h5>
+          <p class="card-text text-muted">Developer</p>
+          <p class="card-text">Eric is a passionate software engineer with a background in computer science. He specializes in backend development and database management, focusing on creating robust and secure systems. In his spare time, he enjoys playing basketball and volunteering in his community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call-to-Action Section -->
+<section id="cta" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Connect with us on social media!</h2>
+    <p class="mb-4">Stay updated with our latest events and offers.</p>
+  <button class="btn btn-primary" onclick="togglePopup()">Follow us</button>
+  </div>
+</section>
+
+<!-- Social Media Popup -->
+<div id="socialMediaPopup" class="modal fade">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Follow Us on Social Media</h5>
+                <button type="button" class="close" onclick="togglePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-unstyled list-inline social-media-list">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="../static/script.js"></script>
+
+</body>
+</html>
+
